@@ -1,10 +1,13 @@
-# Machine Learning Engineer Nanodegree
-## Capstone Proposal
-Joe Udacity  
-December 31st, 2050
+# Modeling and Predicting the Flight Delay
+## Proposal for Capstone Project during Udacity Machine Learning Engineer Nanodegree
+Karthik Sunil
+Aug 8th, 2019
+---
 
-## Proposal
-_(approx. 2-3 pages)_
+## 
+This document explains the background forthis capstone project. 
+- The source of dataset 
+- The appoach that will be used for exploratory data analysis and also will provide
 
 ### Domain Background
 _(approx. 1-2 paragraphs)_
