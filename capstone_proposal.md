@@ -49,14 +49,16 @@ The best approach to predict the delay in the data is Regression. Following are 
 2. Polunomial Regression
 3. Regularization methods like Ridge or Lasso Regression
 
-*Liner regression* can be mathematically expressed as 
-Y = m1x1 + m2x2 + m3x3 + .. + mnxn + b where: <br>
+*Liner regression* can be mathematically expressed as: <br>
+``` Y = m1x1 + m2x2 + m3x3 + .. + mnxn + b where: ``` <br> 
 Y = Target variable, in our case it is departure delay <br> 
 x1, x2 .. xn = Independent variables (features) which will impact the Target variable. In our case, it can be source airport, airline, time of departure etc
 a1, a2, .. an = Coefficients of different features
 b = Bias, it is also Y interecept
 
 Similarly in case of *Polynomial Regression* one or more of the features have the degree more than 1 in the equation.
+
+In *Regularization methods*, coefficient values are penalized by adding them L1 Regularization or in their squares, L2 Regularization to the loss function
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
