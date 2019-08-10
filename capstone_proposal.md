@@ -2,31 +2,45 @@
 
 ## Proposal for Capstone Project - Udacity Machine Learning Engineer Nanodegree
 
-Karthik Sunil
+Karthik Sunil <br>
 Aug 8th, 2019
+
 ---
 
-### This document explains the background forthis capstone project. 
+### This document explains the background for this capstone project. 
 
 - The source of dataset 
-- The appoach that will be used for exploratory data analysis 
-- Feature exploration which can be used for ML modelling 
-- 
+- Understanding the data and data cleaning
+- Exploratory data analysis approach
+- Different visualizations that can be used data exploration
+- Feature exploration that can be used for ML modelling 
+- Exploring different approaches 
 
 ### Domain Background
-_(approx. 1-2 paragraphs)_
 
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+In the US, there are around 44,000 flights per day on an average. More than 2.5 million passengers travel through domestic flights per day. Air travel has become very stable and matured over couple of decades. However, there are still a lot of cancellations and delays that cause passengers a huge discomfort as well as loss in the businesses. 
+
+There are different type of people who use the commercial flights for travel- tourists, business trips or personal trips to work/home. Delays in the flights will have impact on:
+
+- Connecting flights
+- Missing the customer meetings 
+- Customer discomfort
+
+In this era of information, almost everyone takes informed decisions in their personal and business activities. To make decisions on the flight booking and planning more informed, prediction of delays/cancellation plays a mojor role
 
 ### Problem Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+Flight booking services today provide the data about the price comparisons, no. of hops, flight time etc, however, it will be add to customer delight if those services can provide a hint about predicted delays/cancellations.It becomes a great boon for travellers if they know the predicted delay/cancellation of flights much in advance which helps them to plan ahead.
+
+Based on the historical data of flights, one can figure out what are all the parameters which affect the delay/cancellation. A regression model can be built to predict such delays in the flight. 
 
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
+The datasets considered for this analysis and model building is from Kaggle https://www.kaggle.com/usdot/flight-delays
+This dataset by DOT of USA contains all the flight data during 2015 by 14 different airlines. It has around 5.8 million flight data with airlines, source and destination airport, scheduled and actual deprature and arrival times. 
+
+This is perfect data for our data exploration and modeling. 
+
 
 ### Solution Statement
 _(approx. 1 paragraph)_
