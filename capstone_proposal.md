@@ -39,13 +39,18 @@ Based on the historical data of flights, one can figure out what are all the par
 The datasets considered for this analysis and model building is from Kaggle https://www.kaggle.com/usdot/flight-delays
 This dataset by DOT of USA contains all the flight data during 2015 by 14 different airlines. It has around 5.8 million flight data with airlines, source and destination airport, scheduled and actual deprature and arrival times. 
 
-This is perfect data for our data exploration and modeling. 
+This is perfect data for this data exploration and modeling. 
 
 
 ### Solution Statement
-_(approx. 1 paragraph)_
+The best approach to predict the delay in the data is Regression. Following are some of the regression methods we can explore:
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+1. Linear Regression
+2. Polunomial Regression
+3. Regularization methods like Ridge or Lasso Regression
+
+Liner regression can be mathematically expressed as 
+Y = m1x1 + 
 
 ### Benchmark Model
 _(approximately 1-2 paragraphs)_
