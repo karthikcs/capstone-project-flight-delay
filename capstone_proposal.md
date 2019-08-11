@@ -1,6 +1,6 @@
-# Modeling and Predicting the Flight Delay
+# Modelling and Predicting the Flight Delays
 
-## Capstone Project - Udacity Machine Learning Engineer Nanodegree - A proposal
+## Capstone Project| Udacity Machine Learning Engineer Nanodegree| Proposal
 
 Karthik Sunil <br>
 Aug 8th, 2019
@@ -12,7 +12,7 @@ Aug 8th, 2019
 - The source of dataset 
 - Understanding the data and data cleaning
 - Exploratory data analysis approach
-- Different visualizations that can be used data exploration
+- Different visualizations that can be used during data exploration
 - Feature exploration that can be used for ML modelling 
 - Exploring different approaches 
 
@@ -20,26 +20,28 @@ Aug 8th, 2019
 
 In the US, there are around 44,000 flights per day on an average. More than 2.5 million passengers travel through domestic flights per day. Air travel has become very stable and matured over couple of decades. However, there are still a lot of cancellations and delays that cause passengers a huge discomfort as well as loss in the businesses. 
 
-There are different type of people who use the commercial flights for travel- tourists, business trips or personal trips to work/home. Delays in the flights will have impact on:
+There are different type of people who use the commercial flights for travel- tourism, business trips or personal trips to work/home. Delays in the flights will have impact on:
 
 - Connecting flights
-- Missing the customer meetings 
+- Missing the business meetings 
 - Customer discomfort
 
 In this era of information, almost everyone takes informed decisions in their personal and business activities. To make decisions on the flight booking and planning more informed, prediction of delays/cancellation plays a mojor role
 
 ### Problem Statement
 
-Flight booking services today provide the data about the price comparisons, no. of hops, flight time etc, however, it will be add to customer delight if those services can provide a hint about predicted delays/cancellations.It becomes a great boon for travellers if they know the predicted delay/cancellation of flights much in advance which helps them to plan ahead.
+Flight booking services today provide the data about the price comparisons, no. of hops, flight time etc, however, it will add to customer delight if those services can provide a hint about predicted delays/cancellations. It becomes a great boon for travellers if they know the predicted delay/cancellation of flights much in advance which helps them to plan ahead.
+
+Predcition of delays will also help airlines to plan ahead to avoid them. Also sometimes they can reengineer their operative processes/ procedures which can reduce the flight delays.
 
 Based on the historical data of flights, one can figure out what are all the parameters which affect the delay/cancellation. A regression model can be built to predict such delays in the flight. 
 
 ### Datasets and Inputs
 
 The datasets considered for this analysis and model building is from Kaggle https://www.kaggle.com/usdot/flight-delays
-This dataset by DOT of USA contains all the flight data during 2015 by 14 different airlines. It has around 5.8 million flight data with airlines, source and destination airport, scheduled and actual deprature and arrival times. 
+This dataset by DOT of USA contains all the flight data during 2015 by 14 different airlines. It has around 5.8 million flight data with airlines, source and destination airport, scheduled and actual deprature, arrival times, taxi-out/in data etc.
 
-This is perfect data for this data exploration and modeling. 
+This is perfect data for this data project 
 
 
 ### Solution Statement
@@ -56,7 +58,7 @@ This is perfect data for this data exploration and modeling.
 
 By looking above definitions, we observe many parameters with respect to times during a flight. Some of them are interdependent. For egs. the arrival time depends on departure time, taxi-out, taxi-in and air time. 
 
-In this project, I look for predecting the Arrival delay. 
+In this project, we look for predecting the Arrival delay. 
 
 The best approach to predict the delay in the data is Regression. Following are some of the regression methods we can explore:
 
@@ -87,7 +89,7 @@ Some of common metrics considered for measurement of the regression model would 
 2. [MSE (Mean Squared Error)](https://en.wikipedia.org/wiki/Mean_squared_error)
 3. [R2 Score (Coefficient of determination)](https://en.wikipedia.org/wiki/Coefficient_of_determination)
 
-In this solution design, I propose to use the MSE as the preferred metric for evaluating the model
+In this solution design, we  use the MSE as the preferred metric for evaluating the model
 
 ### Project Design
 
@@ -96,7 +98,7 @@ The general sequence of the steps followed for the project:
 #### 1. Data acquaintance
 In this step, data is understood by high level statistical analysis. Get familiarized with data columns, observe the statistcal information and completeness of the columns. I intend to use ```pandas``` libraries to explore the data and use methods like ```describe``` get more statistical information about data. 
 
-The data set that I will be using has the following shape. It has around 5.8 millions of flight data with 31 features. One of them (most probably the *Arrival delay*) will be target variable and rest of 30 columns need to be analysed to see which of them impacts the target variable. 
+The data set's shape is as follows. It has around 5.8 millions of flight data with 31 features. One of them (most probably the *Arrival delay*) will be target variable and rest of 30 columns need to be analysed to see which of them impacts the target variable. 
 
 > Dataframe dimensions: (5819079, 31)
 
