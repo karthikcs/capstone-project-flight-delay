@@ -43,6 +43,21 @@ This is perfect data for this data exploration and modeling.
 
 
 ### Solution Statement
+
+#### Some definitions:
+- Departure time: It is when a plane leaves the gate
+- Arrival time: It is when the plane pulls up to the gate
+- Scheduled time: Planned time of either departure or arrival
+- Actual time: Actual time when the flight has departed or arrived 
+- Delay: Difference between planned time and actual time, for for departure or arrival
+- Taxi-out: It is defined as the time spent by a flight between its actual off-block time and actual take-off time. 
+- Taxi-in: It is defined as the time spent after flight has landed till it reaches the block for disembarkment.
+- Air time: Period during which a particular aircraft remains airborne. Also called wheels-off to wheels-on time.
+
+By looking above definitions, we observe many parameters with respect to times during a flight. Some of them are interdependent. For egs. the arrival time depends on departure time, taxi-out, taxi-in and air time. 
+
+In this project, I look for predecting the Arrival delay. 
+
 The best approach to predict the delay in the data is Regression. Following are some of the regression methods we can explore:
 
 1. Linear Regression
@@ -62,19 +77,17 @@ In *Regularization methods*, coefficient values are penalized by adding them L1 
 
 ### Benchmark Model
 
-#### Some definitions:
-- Taxi-out: 
-- Taxi-in:
-- Scheduled time:
-- Departure time:
-- Air time:
+As per Federal Aviation Administration (*FAA*), General Aviation departure delays are 15 min or less. That can be considered as baseline for delays. With respect to building the model, we can consider source airport and airline are two feature variables and build a *Linear Regression model*. That can be considered as our benchmark model. 
 
-As per Federal Aviation Administration (*FAA*), General Aviation departure delays are 15 min or less. That can be considered as baseline for delays. With respect to building the model, we can consider source airport and airline are two feature variables and build a *Linear Regression model*. That can be considered as our benchmark model. The metric considered for measurement of the model would ne MSE (Mean Squared Error) of the Linear model.
 
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
+Some of common metrics considered for measurement of the regression model would be:
+1. [Mean Absolute Error (MAE)](https://en.wikipedia.org/wiki/Mean_absolute_error)
+2. [MSE (Mean Squared Error)](https://en.wikipedia.org/wiki/Mean_squared_error)
+3. [R2 Score (Coefficient of determination)](https://en.wikipedia.org/wiki/Coefficient_of_determination)
+
+In this solution design, I propose to use the MSE as the preferred metric for evaluating the model
 
 ### Project Design
 _(approx. 1 page)_
