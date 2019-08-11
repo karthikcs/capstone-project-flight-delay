@@ -69,11 +69,7 @@ In *Regularization methods*, coefficient values are penalized by adding them L1 
 - Departure time:
 - Air time:
 
-As per Federal Aviation Administration (*FAA*), General Aviation departure delays are 15 min or less. That can be considered as baseline. Departures are experiencing taxi delays of 16 to 45 minutes and/or arrivals are experiencing airborne holding delays of 16 to 45 minutes. Traffic destined to this airport is being delayed at its departure point. Check your departure airport to see if your flight may be affected. This denotes a closed airport!
-
-_(approximately 1-2 paragraphs)_
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
+As per Federal Aviation Administration (*FAA*), General Aviation departure delays are 15 min or less. That can be considered as baseline for delays. With respect to building the model, we can consider source airport and airline are two feature variables and build a *Linear Regression model*. That can be considered as our benchmark model. The metric considered for measurement of the model would ne MSE (Mean Squared Error) of the Linear model.
 
 ### Evaluation Metrics
 _(approx. 1-2 paragraphs)_
