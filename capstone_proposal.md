@@ -61,7 +61,7 @@ In this project, I look for predecting the Arrival delay.
 The best approach to predict the delay in the data is Regression. Following are some of the regression methods we can explore:
 
 1. Linear Regression
-2. Polunomial Regression
+2. Polynomial Regression
 3. Regularization methods like Ridge or Lasso Regression
 
 *Liner regression* can be mathematically expressed as: <br>
@@ -90,9 +90,50 @@ Some of common metrics considered for measurement of the regression model would 
 In this solution design, I propose to use the MSE as the preferred metric for evaluating the model
 
 ### Project Design
-_(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+The general sequence of the steps followed for the project:
+
+#### 1. Data acquaintance
+In this step, data is understood by high level statistical analysis. Get familiarized with data columns, observe the statistcal information and completeness of the columns. I intend to use ```pandas``` libraries to explore the data and use methods like ```describe``` get more statistical information about data. 
+
+The data set that I will be using has the following shape. It has around 5.8 millions of flight data with 31 features. One of them (most probably the *Arrival delay*) will be target variable and rest of 30 columns need to be analysed to see which of them impacts the target variable. 
+
+> Dataframe dimensions: (5819079, 31)
+
+More exploration will be done to check the correlations between the columns and to get early intuitions on feature selections
+
+We can observe that almost 98% of data is filled for most important columns. So, we can consider that dataset is pretty complete for analysis.
+
+![Filling Factor](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/Filling%20Factor.JPG)
+
+#### 2. Data Pre-Processing
+Most importan step in this project is to check for formats of data. For instance we can observe that, in the data, dates are coded according to 4 variables: **YEAR, MONTH, DAY**, and **DAY_OF_WEEK**. In fact, python offers the **_datetime_** format which is really convenient to work with dates and times and I plan convert the dates in that format.
+
+Another aspect of preprocessing of data is encoding the categorical variables. We have Airline and Airports information in each flight, they are non-numerical categorical variables. We can use either [Label Encoding](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html) OR [One Hot Encoding](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html)
+
+#### 3. EDA - Exploratory Data Analysis
+Once we have general acquaintance of data, we next use different visualization techniques using ```seaborn``` and ```matplotlib``` for conducting Exploatory Data Analysis. Different graphics can be plotted to visualize the data. This will help us in shortlisting the features those will have highest impact on our target variable.
+
+The visualization will also help us in shortlisting different algorithms which can be used for Regression. We will see if there are any Linear relationship between target variable, if not we should look for some patterns from which we can get some polynomial relations.
+
+Some of the graphics which can be used for EDA would be 
+- Scatter plots 
+- Histograms
+- Heatmaps
+- Bar and Pie charts
+
+#### 4. Feature Engineering
+In this step we find the relevant featues necessary for building the model. We might also engineer new features based on other features using the techniches like PCA if feasible. 
+
+#### 5. Model Selection
+In this step, we experiment with existing algorithms to find out the best model which helps to resolve the problem at hand
+
+#### 6. Model Tuning
+Once we have finalized the model, we can explore the tweaking of hyper parameters and other settings to improve the results
+
+#### 7. Testing
+We need to split the data into training set and testing set. This is must to avoid any bias during the training. 
+Step no. 5 thru 7 happens in loop. Every time we tweak something in algorithm and/or hyper parameters we use the train set to train and test set to evaluate the result using the prescribed metrics. This iteration of model improvements can be stopped once we have satisfactory results.
 
 ### References:
 - [Predicting Taxi-Out Time at Congested Airports with Optimization-Based Support Vector Regression Method](https://www.hindawi.com/journals/mpe/2018/7509508/)
@@ -100,10 +141,3 @@ In this final section, summarize a theoretical workflow for approaching a soluti
 
 -----------
 
-**Before submitting your proposal, ask yourself. . .**
-
-- Does the proposal you have written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your proposal?
-- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
