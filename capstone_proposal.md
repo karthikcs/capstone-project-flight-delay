@@ -61,6 +61,16 @@ Similarly in case of *Polynomial Regression* one or more of the features have th
 In *Regularization methods*, coefficient values are penalized by adding them L1 Regularization or in their squares, L2 Regularization to the loss function
 
 ### Benchmark Model
+
+#### Some definitions:
+- Taxi-out: 
+- Taxi-in:
+- Scheduled time:
+- Departure time:
+- Air time:
+
+As per Federal Aviation Administration (*FAA*), General Aviation departure delays are 15 min or less. That can be considered as baseline. Departures are experiencing taxi delays of 16 to 45 minutes and/or arrivals are experiencing airborne holding delays of 16 to 45 minutes. Traffic destined to this airport is being delayed at its departure point. Check your departure airport to see if your flight may be affected. This denotes a closed airport!
+
 _(approximately 1-2 paragraphs)_
 
 In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
@@ -74,6 +84,10 @@ In this section, propose at least one evaluation metric that can be used to quan
 _(approx. 1 page)_
 
 In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+
+### References:
+- [Predicting Taxi-Out Time at Congested Airports with Optimization-Based Support Vector Regression Method](https://www.hindawi.com/journals/mpe/2018/7509508/)
+- [Flight Delay Information - Air Traffic Control System Command Center](https://www.fly.faa.gov/flyfaa/usmap.jsp)
 
 -----------
 
