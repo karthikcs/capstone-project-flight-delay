@@ -1,6 +1,6 @@
 # Modeling and Predicting the Flight Delay
 
-## Proposal for Capstone Project - Udacity Machine Learning Engineer Nanodegree
+## Capstone Project - Udacity Machine Learning Engineer Nanodegree - A proposal
 
 Karthik Sunil <br>
 Aug 8th, 2019
