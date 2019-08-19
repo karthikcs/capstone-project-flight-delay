@@ -21,5 +21,10 @@ The entire project repository is in gihub, including the  proposal, report, note
 url - https://github.com/karthikcs/capstone-project-flight-delay
 All images are in - https://github.com/karthikcs/capstone-project-flight-delay/tree/master/images
 
+## Capstone Proposal Review Link
+
+https://review.udacity.com/#!/reviews/1937033
+
+
 
 
