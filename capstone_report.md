@@ -79,6 +79,8 @@ At fist glance we can see that Southwest Airlines (WN) has highest number of fli
 ### Exploratory Visualization
 In this section let us try to visually see what are all the features that are affecting the ```DEPARTURE_DELAY``` 
 
+**AIRLINE** Feature <br>
+
 In the following images, we can see how Airlines have different delays
 
 ![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-1.png)
@@ -89,27 +91,76 @@ In the pie chart that gives the percentage of flights per airline, we see that t
 
 Finally, the figure at the bottom provides a census of all the delays that were measured in the sample data. This representation gives a feeling on the dispersion of data and put in perspective the relative homogeneity that appeared in the second pie chart. Indeed, we see that while all mean delays are around 10 minutes, this low value is a consequence of the fact that a majority of flights take off on time. However, we see that occasionally, we can face really large delays that can reach a few tens of hours !
 
+The large majority of short delays is explained in the picture below:
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/delay_dist.png)
+
+This graph above shows a flight delays less than 15 minutes, those in the range 15 to 60 min and finally, the delays greater than 60 minutes. Hence, we see clearly independent of airlines, delays greater than 60 minutes account only for a few percentage. However, the proportion of delays in these three groups depends on the airline: as an exemple, in the case of 
+*SkyWest Airlines*, the delays greater than 60 minutes are only lower by ~30% with respect to delays in the range 15 < t < 60 min. Things are better for *SoutWest Airlines*  since delays greater than 60 minutes are 4 times less frequent than delays in the mid range.
+
+Overall, we can also see the delay status of all flights as shown in the table below:
+
+|Delay|Percentage of flights|
+|---|---|
+|Ontime|  79.4%|
+|Small delay|  13.8%|
+|Large delay|  6.8%|
+
+
+**Time of the day** Feature <br>
+Let us find delay pattern by time of the day 
+
+![](https://github.com/karthikcs/capstone-project-flight-delay/blob/master/images/download.png)
+
+In the above scatter plot we can see all the flights represented with point. The X Axis is time of departure time represented a number sequential seconds and Y axis by Departure Delay. We can see that delay suddenly raises by 5 AM and divergence of delays keeps reducing as day goes on. In the graph below, we can see average delay keeps increasing as the day goes on
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/dep_hr.png)
+
+
+**Airport** Feature <br>
+In the next section, let us try to find impact of ```ORIGIN_AIRPORT``` on ```DEPARTURE_DELAY``` 
+The following grpah shows the heatmap of delays vs airport
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/heatmap.png)
+
+In the above graph, we can see relationship with Airport and Airlines. Darker the color higher the delay. We definitely know Airport impacts a lot on Departure Delay. 
+
 
 ### Algorithms and Techniques
-In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
-- _Are the algorithms you will use, including any default variables/parameters in the project clearly defined?_
-- _Are the techniques to be used thoroughly discussed and justified?_
-- _Is it made clear how the input data or datasets will be handled by the algorithms and techniques chosen?_
+Here we are using the following models:
+-Linear regression
+-Polynomial regression
+-Light GBM 
+-Ridge regression
+
+Here **Linear regression** is taken as benchmark model and later let us move to polynomial regression as it provides of the relationship between the dependent and independent variable. Polynomial basically fits a wide range of curvature as well. And the end we will use Light GBM algorithm as the data is non-linear. It is good to try out a tree based model.
+We split our data to train test and apply the above algorithms and compare the evaluation metrics.
+The regularization technique ridge is also implemented for comparison. We have also used Grid search technique to find best plynomial order n and alpha-coefficient of ridge regression.
 
 ### Benchmark
-In this section, you will need to provide a clearly defined benchmark result or threshold for comparing across performances obtained by your solution. The reasoning behind the benchmark (in the case where it is not an established result) should be discussed. Questions to ask yourself when writing this section:
-- _Has some result or value been provided that acts as a benchmark for measuring performance?_
-- _Is it clear how this result or value was obtained (whether by data or by hypothesis)?_
+As it is regression problem it is best to consider simple linear regression as benchmark model and try to beat its MSE value with other improvised models.
+The below is the value of the MSE for our benchmark model that was used:
+**MSE for Linear Regression	30.43 (Benchmark)**
+
+Liner regression can be mathematically expressed as:
+Y = mX+b where: 
+Y = Target variable or dependent variable, in our case it is departure delay
+X=x1, x2 .. xn = Independent variables (features) which will impact the Target variable. In our case, they are 
+origin airport, airline, time of departure etc m = set of coefficients of different features b = Bias, it is also Y
+interecept
 
 
 ## III. Methodology
-_(approx. 3-5 pages)_
 
 ### Data Preprocessing
-In this section, all of your preprocessing steps will need to be clearly documented, if any were necessary. From the previous section, any of the abnormalities or characteristics that you identified about the dataset will be addressed and corrected here. Questions to ask yourself when writing this section:
-- _If the algorithms chosen require preprocessing steps like feature selection or feature transformations, have they been properly documented?_
-- _Based on the **Data Exploration** section, if there were abnormalities or characteristics that needed to be addressed, have they been properly corrected?_
-- _If no preprocessing is needed, has it been made clear why?_
+We have few data processing steps such as changing the format of Scheduled departure & arrival and Actual departure & Arrival time to stnadard *DATETIME* formats.
+
+Next we treat missing values by removing them as ~99% of our data is complete.
+We also remove the cancelled flights as they can not add any values in predicting the flight delays
+
+Out of 3 feature variables two are Categorical variables - ```ORIGIN_AIRPORT``` and ```AIRLINE```. We convert them into Label encoding so that we can build the models. The model might get biased based on label encoded value, so it is preferred to use *OneHot Encoding*, however, due to the huge number of airports, the number columns created by encoding was not been able to handle by the kernel. So it was decided to go ahead with **Label encoding** itself.
+
+In modelling we split the data into train and test. Also we have considered cross validation and regularization
 
 ### Implementation
 In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
