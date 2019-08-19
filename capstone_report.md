@@ -32,21 +32,48 @@ Based on the historical data of flights, one can figure out what are all the dat
 ### Metrics
 As our problem is based on prediction of departure delays based on regression model. Large differences between actual and predictedvalues are punished in MSE . Therefore we have taken MSE as one of our evaluation metrics. As we have tried different models including benchmark model which is linear regression they all should have common evaluation metrics so that we can compare which is the better model. 
 
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/MSE2.png)
+
+Where y is expected value and y hat is predicted value
+
 We also use R2 (Co-efficient of determination) as another metric to evaluate our models. It is explain below
+![](https://github.com/karthikcs/capstone-project-flight-delay/blob/master/images/rsquarecanva2.png)
 
 
 In our project we are using both MSE and R2 as metrics to evaluate all our models
 
 
 ## II. Analysis
-_(approx. 2-4 pages)_
+In this section let us explore and try understand the data. We also perform Exploratory Data Analysis using visual graphics to find probably features of the model. 
 
 ### Data Exploration
-In this section, you will be expected to analyze the data you are using for the problem. This data can either be in the form of a dataset (or datasets), input data (or input files), or even an environment. The type of data should be thoroughly described and, if possible, have basic statistics and information presented (such as discussion of input features or defining characteristics about the input or environment). Any abnormalities or interesting qualities about the data that may need to be addressed have been identified (such as features that need to be transformed or the possibility of outliers). Questions to ask yourself when writing this section:
-- _If a dataset is present for this problem, have you thoroughly discussed certain features about the dataset? Has a data sample been provided to the reader?_
-- _If a dataset is present for this problem, are statistics about the dataset calculated and reported? Have any relevant results from this calculation been discussed?_
-- _If a dataset is **not** present for this problem, has discussion been made about the input space or input data for your problem?_
-- _Are there any abnormalities or characteristics about the input space or dataset that need to be addressed? (categorical variables, missing values, outliers, etc.)_
+Each entry of the input file `flights.csv` file corresponds to a flight and we see that more than 5.8 million flights have been recorded in 2015. These flights are described according to 31 variables. Here are few variables that I explain:
+Inputs from the file:
+- **YEAR, MONTH, DAY, DAY_OF_WEEK**: dates of the flight <br/>
+- **AIRLINE**: An identification number assigned by US DOT to identify a unique airline <br/>
+- **ORIGIN_AIRPORT** and **DESTINATION_AIRPORT**: code attributed by IATA to identify the airports <br/>
+- **SCHEDULED_DEPARTURE** and **SCHEDULED_ARRIVAL** : scheduled times of take-off and landing <br/> 
+- **DEPARTURE_TIME** and **ARRIVAL_TIME**: real times at which take-off and landing took place <br/> 
+- **DEPARTURE_DELAY** and **ARRIVAL_DELAY**: difference (in minutes) between planned and real times <br/> 
+- **DISTANCE**: distance (in miles)  <br/>
+
+We also see the filling factor. Almost 99% of data records are filled, so I decided to drop rest 1% records, instead of filling with some estimates. This will not affect much on model because we have very huge number of records
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/FillFactor99.PNG)
+
+Another problem occured during visualiztion and model building was that due to huge number of records, the RAM of the kernel was overflowing and hence I decided to sample the data. Instead of taking ramdom sampling, I did some analysis. I plotted the graph to see how the delay is varied compared to different month of the year 2015. Following graph shows the variation. I decided to take 1 month from each quarter so that we have sample across the year. *Feb, Jun, Aug and Dec* months were considered for further analysis and model building, which contains around 1.8 million records
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/month_delay.png)
+
+**Output Variable**
+As we have already established, the main purpose of this project is to predict the flight delays. In the dataset we have two type of delays. Departure and Arrival. From the below grpahics we can see determine that Arival delay is almost always is less than that of Departure delay. The plausible explanation could be, Airlines would be adjusting other factors like speed of the flight to cover up the Arrival delay. So, there are more factors which might affect the model if we consider Arrival delays. In this project we have considered Departure delay as the Y variable
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/Arrival_departure.png)
+
+**Statistical Data by Airlines**
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/Delay_Airline.PNG)
+
+At fist glance we can see that Southwest Airlines (WN) has highest number of flights, with a mean delay of 12.6 min. We can consider that as best Airlines. Spirit Airlines (NK) with 22.3 min as mean delay can be considered as worst Airlines.
 
 ### Exploratory Visualization
 In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
