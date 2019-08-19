@@ -1,5 +1,5 @@
-# Machine Learning Engineer Nanodegree
-## Predicting flight delays
+# Machine Learning Engineer Nanodegree 
+## Predicting flight delays - Capstone Project Report
 Karthik Sunil <br>
 August 18th, 2019
 
@@ -23,16 +23,19 @@ This dataset by DOT of USA contains all the flight data during 2015 by 14 differ
 This is perfect data for this data project 
 
 ### Problem Statement
-Flight booking services today provide the data about the price comparisons, no. of hops, flight time etc, however, it will add to customer delight if those services can provide a hint about predicted delays/cancellations. It becomes a great boon for travellers if they know the predicted delay/cancellation of flights much in advance which helps them to plan ahead.
+Flight booking services today provide the data about the price comparisons, no. of hops, flight time etc, however, it will add to customer delight if those services can provide a hint about predicted delays. It becomes a great boon for travellers if they know the predicted delays of flights much in advance which helps them to plan ahead.
 
-Predcition of delays will also help airlines to plan ahead to avoid them. Also sometimes they can reengineer their operative processes/ procedures which can reduce the flight delays.
+Predcition of delays will also help airlines to plan ahead to avoid them. Also Airlines can reengineer their operative processes/ procedures which can reduce the flight delays in future. 
 
-Based on the historical data of flights, one can figure out what are all the parameters which affect the delay/cancellation. A regression model can be built to predict such delays in the flight. 
+Based on the historical data of flights, one can figure out what are all the data which affect the delay. A regression model can be built to predict such delays in the flight departures. 
 
 ### Metrics
-In this section, you will need to clearly define the metrics or calculations you will use to measure performance of a model or result in your project. These calculations and metrics should be justified based on the characteristics of the problem and problem domain. Questions to ask yourself when writing this section:
-- _Are the metrics you’ve chosen to measure the performance of your models clearly discussed and defined?_
-- _Have you provided reasonable justification for the metrics chosen based on the problem and solution?_
+As our problem is based on prediction of departure delays based on regression model. Large differences between actual and predictedvalues are punished in MSE . Therefore we have taken MSE as one of our evaluation metrics. As we have tried different models including benchmark model which is linear regression they all should have common evaluation metrics so that we can compare which is the better model. 
+
+We also use R2 (Co-efficient of determination) as another metric to evaluate our models. It is explain below
+
+
+In our project we are using both MSE and R2 as metrics to evaluate all our models
 
 
 ## II. Analysis
