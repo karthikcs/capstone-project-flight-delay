@@ -70,16 +70,25 @@ As we have already established, the main purpose of this project is to predict t
 
 ![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/Arrival_departure.png)
 
-**Statistical Data by Airlines**
+**Statistical Data by Airlines** 
+
 ![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/Delay_Airline.PNG)
 
 At fist glance we can see that Southwest Airlines (WN) has highest number of flights, with a mean delay of 12.6 min. We can consider that as best Airlines. Spirit Airlines (NK) with 22.3 min as mean delay can be considered as worst Airlines.
 
 ### Exploratory Visualization
-In this section, you will need to provide some form of visualization that summarizes or extracts a relevant characteristic or feature about the data. The visualization should adequately support the data being used. Discuss why this visualization was chosen and how it is relevant. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant characteristic or feature about the dataset or input data?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+In this section let us try to visually see what are all the features that are affecting the ```DEPARTURE_DELAY``` 
+
+In the following images, we can see how Airlines have different delays
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-1.png)
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-2.png)
+
+In the pie chart that gives the percentage of flights per airline, we see that there is some disparity between the Airlines. For exemple, *Southwest Airlines* accounts for ~22% of the flights. However, if we have a look at the second pie chart, we see that here, on the contrary, the differences among airlines are less pronounced. Excluding *Hawaiian Airlines* and *Alaska Airlines* that report extremely low mean delays, we obtain that a value of 13+or-9 minutes would correctly represent all mean delays.
+
+Finally, the figure at the bottom provides a census of all the delays that were measured in the sample data. This representation gives a feeling on the dispersion of data and put in perspective the relative homogeneity that appeared in the second pie chart. Indeed, we see that while all mean delays are around 10 minutes, this low value is a consequence of the fact that a majority of flights take off on time. However, we see that occasionally, we can face really large delays that can reach a few tens of hours !
+
 
 ### Algorithms and Techniques
 In this section, you will need to discuss the algorithms and techniques you intend to use for solving the problem. You should justify the use of each one based on the characteristics of the problem and the problem domain. Questions to ask yourself when writing this section:
