@@ -36,11 +36,7 @@ As our problem is based on prediction of departure delays based on regression mo
 
 Where y is expected value and y hat is predicted value
 
-We also use R2 (Co-efficient of determination) as another metric to evaluate our models. It is explain below
-![](https://github.com/karthikcs/capstone-project-flight-delay/blob/master/images/rsquarecanva2.png)
-
-
-In our project we are using both MSE and R2 as metrics to evaluate all our models
+In our project we use MSE as metrics to evaluate all our models
 
 
 ## II. Analysis
@@ -85,7 +81,7 @@ In the following images, we can see how Airlines have different delays
 
 ![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-1.png)
 
-![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-2.png)
+
 
 In the pie chart that gives the percentage of flights per airline, we see that there is some disparity between the Airlines. For exemple, *Southwest Airlines* accounts for ~22% of the flights. However, if we have a look at the second pie chart, we see that here, on the contrary, the differences among airlines are less pronounced. Excluding *Hawaiian Airlines* and *Alaska Airlines* that report extremely low mean delays, we obtain that a value of 13+or-9 minutes would correctly represent all mean delays.
 
@@ -127,11 +123,12 @@ In the above graph, we can see relationship with Airport and Airlines. Darker th
 
 
 ### Algorithms and Techniques
-Here we are using the following models:
--Linear regression
--Polynomial regression
--Light GBM 
--Ridge regression
+
+Here we are using the following models. 
+- Linear regression
+- Polynomial regression
+- Light GBM 
+- Ridge regression
 
 Here **Linear regression** is taken as benchmark model and later let us move to polynomial regression as it provides of the relationship between the dependent and independent variable. Polynomial basically fits a wide range of curvature as well. And the end we will use Light GBM algorithm as the data is non-linear. It is good to try out a tree based model.
 We split our data to train test and apply the above algorithms and compare the evaluation metrics.
@@ -140,7 +137,8 @@ The regularization technique ridge is also implemented for comparison. We have a
 ### Benchmark
 As it is regression problem it is best to consider simple linear regression as benchmark model and try to beat its MSE value with other improvised models.
 The below is the value of the MSE for our benchmark model that was used:
-**MSE for Linear Regression	30.43 (Benchmark)**
+
+> **MSE for Linear Regression	32.47 (Benchmark)**
 
 Liner regression can be mathematically expressed as:
 Y = mX+b where: 
@@ -163,65 +161,88 @@ Out of 3 feature variables two are Categorical variables - ```ORIGIN_AIRPORT``` 
 In modelling we split the data into train and test. Also we have considered cross validation and regularization
 
 ### Implementation
-In this section, the process for which metrics, algorithms, and techniques that you implemented for the given data will need to be clearly documented. It should be abundantly clear how the implementation was carried out, and discussion should be made regarding any complications that occurred during this process. Questions to ask yourself when writing this section:
-- _Is it made clear how the algorithms and techniques were implemented with the given datasets or input data?_
-- _Were there any complications with the original metrics or techniques that required changing prior to acquiring a solution?_
-- _Was there any part of the coding process (e.g., writing complicated functions) that should be documented?_
+
+The implementation has been done using Python and Jupyter Notebook. The following figure provides the details steps taken for this project and also provides the respective Section Numbers in the Jupyter Notebook.
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/steps2.PNG)
 
 ### Refinement
-In this section, you will need to discuss the process of improvement you made upon the algorithms and techniques you used in your implementation. For example, adjusting parameters for certain models to acquire improved solutions would fall under the refinement category. Your initial and final solutions should be reported, as well as any significant intermediate results as necessary. Questions to ask yourself when writing this section:
-- _Has an initial solution been found and clearly reported?_
-- _Is the process of improvement clearly documented, such as what techniques were used?_
-- _Are intermediate and final solutions clearly reported as the process is improved?_
+We have started our solution with Linear Model. But in the EDA we have already seen that the data is not Linear.
+
+* **Polynomial Model** : We built the polynomial model with higher order. We run a grid search with various order. We found best results were obtained with 4th order
+* **Ridge Regression**: We also improve polynomial model with Regularization technique using Ridge regression. We provide alpha and poly order in the grid search and found the best alpha was actually zero. 
+* **LightGBM**: As we already hypothesised, solution for this problem will be something based on Tree based algorithm. We used LightGBM. This has many hyperparameters. ```boosting_type``` and ```learning_rate``` are most impacting the results. After multiple trials, we found ```boosting_type = 'gbdt'```  and ```learning_rate = 0.08``` fitted the data with best possibility. 
+
+We can declare LightGBM as best fitted model for this data
 
 
 ## IV. Results
-_(approx. 2-3 pages)_
 
 ### Model Evaluation and Validation
-In this section, the final model and any supporting qualities should be evaluated in detail. It should be clear how the final model was derived and why this model was chosen. In addition, some type of analysis should be used to validate the robustness of this model and its solution, such as manipulating the input data or environment to see how the model’s solution is affected (this is called sensitivity analysis). Questions to ask yourself when writing this section:
-- _Is the final model reasonable and aligning with solution expectations? Are the final parameters of the model appropriate?_
-- _Has the final model been tested with various inputs to evaluate whether the model generalizes well to unseen data?_
-- _Is the model robust enough for the problem? Do small perturbations (changes) in training data or the input space greatly affect the results?_
-- _Can results found from the model be trusted?_
+
+Following table gives the results of the various models built for this problem. It also provides the details of the hyperparameters used in obtaining those results
+
+|Model|Parameters|MSE|Comments|
+|---|---|---|---|
+|Linear|N/A|32.47|Baseline|
+|Polynomial|Degree=2|32.33| |
+| |Degree=3|31.52| |
+| |Degree=4|30.96|Best in Polynomial |
+|Random Forest|Estimators=100|32.3| |
+|Ridge|Alpha=0, Degree=4|31.5| |
+|LightGBM|boosting=gbdt, learning rate=0.08|27.78| **Best Model**|
+
 
 ### Justification
-In this section, your model’s final solution and its results should be compared to the benchmark you established earlier in the project using some type of statistical analysis. You should also justify whether these results and the solution are significant enough to have solved the problem posed in the project. Questions to ask yourself when writing this section:
-- _Are the final results found stronger than the benchmark result reported earlier?_
-- _Have you thoroughly analyzed and discussed the final solution?_
-- _Is the final solution significant enough to have solved the problem?_
+It is very evident with the above table that the tree based LightGBM with gbdt boosting type is the model fitted for this problem. Various parameters were tried and tuned for algorithm. Grid Search was also performed to get the best hyperparameters. After all exercise LightGBM with following parameters is considered the best model
+
+
+
+|Parameter|Value|
+|---|---|
+|learning_rate|0.08|
+|boosting_type|'gbdt'|
+|objective|'regression'|
+|metric|'mse'|
+|sub_feature|0.5|
+|num_leaves|100|
+|min_data|5|
+|max_depth|100|
+
+Following points justifies that this model is good enough for the problem at hand
+
+* The results obtained from this algoritm is almost 15% better than the baseline model. 
+* The model predicts the flight departure delay with margin of plus or minus 5 min, where the maximum delay could be any where upto 60 min
+* Provided the variability with respect to Airport and Airlines as depicted in EDA, this model predicts much better reliabiltiy
 
 
 ## V. Conclusion
-_(approx. 1-2 pages)_
 
 ### Free-Form Visualization
-In this section, you will need to provide some form of visualization that emphasizes an important quality about the project. It is much more free-form, but should reasonably support a significant result or characteristic about the problem that you want to discuss. Questions to ask yourself when writing this section:
-- _Have you visualized a relevant or important quality about the problem, dataset, input data, or results?_
-- _Is the visualization thoroughly analyzed and discussed?_
-- _If a plot is provided, are the axes, title, and datum clearly defined?_
+In the below graph we can clearly visualize the variability of flight delays by Departure time and Airline 
+
+![](https://raw.githubusercontent.com/karthikcs/capstone-project-flight-delay/master/images/airline_delay_distr-2.png)
+
+We can also deduce that most of the flights are on time and only a few flights rearely gets delayed. We can also see certain Airlines like *American Airline* have delays all over. The delays are sparsed across the time, while other airline like *Vergin America* the delays are more consistent.
 
 ### Reflection
-In this section, you will summarize the entire end-to-end problem solution and discuss one or two particular aspects of the project you found interesting or difficult. You are expected to reflect on the project as a whole to show that you have a firm understanding of the entire process employed in your work. Questions to ask yourself when writing this section:
-- _Have you thoroughly summarized the entire process you used for this project?_
-- _Were there any interesting aspects of the project?_
-- _Were there any difficult aspects of the project?_
-- _Does the final model and solution fit your expectations for the problem, and should it be used in a general setting to solve these types of problems?_
+When I selected this problem, I was thinking this is pretty simple nut to crack, however as I started the acquainted with the data, I realize it is not quite easy. 
+
+First of all, while learning different models, we have usually seen typical linear and balanced data. However the data we took here is actual flight data and found it is pretty diversed and scattered across. Also the data is not balanced, in the sense, we have seen ~80% of flights are ontime and ~14% is haveing small delay and only ~6% is having large delay. Because of this, it was very difficult find the proper features that describes the target variable.
+
+Another interesting observation about this dataset was that the volume of data. 5.8 million data was so difficult to manage even in the Cloud based Kaggle kernels. Certain pre-processing steps took more than 20 min to complete. So, I had to save the pre-processed data and load in the next run to save time. 
+
+I started with the linear model and kept trying different regression models. As per the reviewer's suggions, I leanrt about LightGBM and implemented that model as well. It turned out that was the best model for this problem
 
 ### Improvement
-In this section, you will need to provide discussion as to how one aspect of the implementation you designed could be improved. As an example, consider ways your implementation can be made more general, and what would need to be modified. You do not need to make this improvement, but the potential solutions resulting from these changes are considered and compared/contrasted to your current solution. Questions to ask yourself when writing this section:
-- _Are there further improvements that could be made on the algorithms or techniques you used in this project?_
-- _Were there algorithms or techniques you researched that you did not know how to implement, but would consider using if you knew how?_
-- _If you used your final solution as the new benchmark, do you think an even better solution exists?_
+Definitely, we can improve the solution for this problem. Following are some of the improvement ideas:
+
+* First of all, we have eliminated Cancelled flights, however in the improved model we can also predict the possibiltiy of cancellation
+* We have removed all the flights which have delays more than 1 hour. We can build a 2 step soltution, first one, which classifies if the flight gets **cancelled*, **short_delay**, **large_delay** or **ontime**. Then in the second step, it can predict the actual delay using regression
+* We can perform an ensemble of LightGBM and Ridge Regression models for better generalization 
+* We can also explore more hyperparameter tuning for LightGBM to improve the model
+* In this solution, we took only 4 months of data due to low power kernels, we can get more powerful kernel and consider all 12 months data
 
 -----------
 
-**Before submitting, ask yourself. . .**
 
-- Does the project report you’ve written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Analysis** and **Methodology**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your analysis, methods, and results?
-- Have you properly proof-read your project report to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
-- Is the code that implements your solution easily readable and properly commented?
-- Does the code execute without error and produce results similar to those reported?
