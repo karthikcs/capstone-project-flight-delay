@@ -238,7 +238,7 @@ I started with the linear model and kept trying different regression models. As 
 Definitely, we can improve the solution for this problem. Following are some of the improvement ideas:
 
 * First of all, we have eliminated Cancelled flights, however in the improved model we can also predict the possibiltiy of cancellation
-* We have removed all the flights which have delays more than 1 hour. We can build a 2 step soltution, first one, which classifies if the flight gets **cancelled*, **short_delay**, **large_delay** or **ontime**. Then in the second step, it can predict the actual delay using regression
+* We have removed all the flights which have delays more than 1 hour. We can build a 2 step soltution, first one, which classifies if the flight gets **cancelled**, **short_delay**, **large_delay** or **ontime**. Then in the second step, it can predict the actual delay using regression
 * We can perform an ensemble of LightGBM and Ridge Regression models for better generalization 
 * We can also explore more hyperparameter tuning for LightGBM to improve the model
 * In this solution, we took only 4 months of data due to low power kernels, we can get more powerful kernel and consider all 12 months data
