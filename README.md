@@ -16,6 +16,10 @@ The dataset required for this notebook is in kaggel.
 
 url - https://www.kaggle.com/usdot/flight-delays
 
+## Kaggle Kernel
+https://www.kaggle.com/karthikcs1/analysis-of-flight-delay
+
+
 ## Github repo
 The entire project repository is in gihub, including the  proposal, report, notebook and also graphs etc. Github repository link is provided below
 url - https://github.com/karthikcs/capstone-project-flight-delay
